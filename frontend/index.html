@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Chat App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Connection Status -->
+        <div id="status-bar">
+            Backend: <span id="backend-status" class="status-indicator offline">Offline</span>
+            MQTT: <span id="mqtt-status" class="status-indicator offline">Offline</span>
+        </div>
+        <!-- Login/Register Form -->
+        <div id="auth-container" class="container">
+            <div class="form-container">
+                <h2>Login / Register</h2>
+                <form id="auth-form">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <div class="button-group">
+                        <button type="button" onclick="handleLogin()">Login</button>
+                        <button type="button" onclick="handleRegister()">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Chat Interface -->
+        <div id="chat-container" class="container hidden">
+            <div class="sidebar">
+                <h3>Users</h3>
+                <div id="users-list"></div>
+            </div>
+            <div class="chat-main">
+                <div id="chat-header">
+                    <h3>Chat with: <span id="selected-user">No user selected</span></h3>
+                </div>
+                <div id="messages-container"></div>
+                <div class="message-input">
+                    <input type="text" id="message-input" placeholder="Type your message..." disabled>
+                    <button onclick="sendMessage()" id="send-button" disabled>Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MQTT Client Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+    <!-- App Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/mqtt-client.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
